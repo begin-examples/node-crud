@@ -8,6 +8,7 @@ patch /api/cats/:catID
 delete /api/cats/:catID
 get /todos
 get /todos/:todoID
+post /todos
 
 @tables
 data
