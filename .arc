@@ -3,7 +3,6 @@ sing-4hk
 
 @http
 get /
-delete /api/cats/:catID
 get /todos
 get /todos/:todoID
 post /todos
