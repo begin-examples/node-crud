@@ -8,7 +8,7 @@ get /todos/:todoID
 post /todos
 patch /todos/:todoID
 delete /todos/:todoID
-post /todos/:todoID/delete
+get /todos/:todoID/delete
 
 @tables
 data
