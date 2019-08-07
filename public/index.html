@@ -1,57 +1,70 @@
-<!-- look a single file component! -->
-<style>
-  main {
-    background:grey;
-  }
-</style>
-
-<form action=/api/cats method=post>
-  <input type=text name=name placeholder="cat name">
-  <select name=breed>
-    <option value=tabby>tabby</option>
-    <option value=black>black</option>
-  </select>
-  <button type=submit>save cat</button>
-</form>
-
-<main>Loading cats...</main>
-
-<script type=module>
-import cats from '/cats.js'
-import cat from '/cat.js'
-
-// bind form
-let form = document.querySelector('form')
-form.onsubmit = async function submit(e) {
-  e.preventDefault()
-  let name = form.querySelector('input').value
-  let breed = form.querySelector('select').value
-  // create the cat
-  await cats.create({name, breed})
-  // reset the list
-  await main()
-}
-
-// render main
-async function main() {
-  // render list
-  let main = document.querySelector('main')
-  let json = await cats.read()
-  let html = json.map(cat).join('')
-  main.innerHTML = html
-  // bind events
-  document.querySelectorAll('button[data-action=destroy]').forEach(n=> {
-    n.onclick = async function destroy(e) {
-      e.preventDefault()
-      let catID = e.target.dataset.key
-      e.target.parentNode.remove() 
-      await cats.destroy(catID)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TODOS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
     }
-  })
-}
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>TODOS</h1>
+  <form action="/todos" method="POST">
+    <input name="text" type="text"/>
+    <button>Submit</button>
+  </form>
+  <ul id="js-todos">
+  </ul>
+  <script>
+    (function () {
+      init()
 
-// this is why ppl want top level await
-;(async function() {
-  await main()
-})()
-</script>
+      function init () {
+        fetch('/todos', {
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => res)
+        .then(body => body.json())
+        .then(json => update(json.todos))
+      }
+
+      function update (todos) {
+        let list = document.getElementById('js-todos')
+        console.log('TODOS: ', todos)
+        list && todos && todos.length
+          ? list.innerHTML = todos.map(t => Todo(t.todo)).join('')
+          : ''
+      }
+
+      function Todo (props) {
+        let text = props.text || ''
+        let id = props.id || ''
+        console.log('PROPS: ', props)
+
+        return `
+        <li id="${id}">
+          ${text}
+          <form
+            action="/todos/${id}/delete"
+            method="POST"
+          >
+            <input type="hidden" name="id" value="${id}" />
+            <button>Delete</button>
+          </form>
+        </li>
+        `
+      }
+    }())
+  </script>
+</body>
+</html>

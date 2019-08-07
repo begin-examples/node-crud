@@ -20,15 +20,14 @@ test('get /', async t => {
   try {
     var url = 'http://localhost:3333'
     var result = await tiny.get({url})
-    t.ok(true, 'got result',console.log(result.toString().substring(50) + '...'))
-  } 
-  catch(e) {
+    t.ok(true, 'got result', console.log(result.toString().substring(50) + '...'))
+  } catch (e) {
     t.fail(e)
     console.log(e.body)
   }
 })
 
-test('shut down the sandbox', t=> {
+test('shut down the sandbox', t => {
   t.plan(1)
   end()
   t.ok(true, 'shutdown successfully')
