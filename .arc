@@ -7,7 +7,6 @@ get /todos
 get /todos/:todoID
 post /todos
 patch /todos/:todoID
-delete /todos/:todoID
 post /todos/:todoID/delete
 post /todos/delete
 
