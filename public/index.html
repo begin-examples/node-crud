@@ -12,16 +12,37 @@
       font-family: sans-serif;
       padding: 2rem;
     }
+    .list-style-none {
+      list-style: none;
+    }
+    .display-flex {
+      display: flex;
+    }
+    .align-items-center {
+      align-items: center;
+    }
   </style>
 </head>
 <body>
   <h1>TODOS</h1>
-  <form action="/todos" method="POST">
-    <input name="text" type="text"/>
+  <h2 id="js-message"></h2>
+  <ul
+    class="list-style-none"
+    id="js-todos"
+  >
+  </ul>
+  <form
+    action="/todos"
+    method="POST"
+  >
+    <input
+      name="text"
+      type="text"
+      placeholder="Enter todo"
+      autofocus="autofocus"
+    />
     <button>Submit</button>
   </form>
-  <ul id="js-todos">
-  </ul>
   <script>
     (function () {
       init()
@@ -40,25 +61,43 @@
 
       function update (todos) {
         let list = document.getElementById('js-todos')
-        console.log('TODOS: ', todos)
-        list && todos && todos.length
-          ? list.innerHTML = todos.map(t => Todo(t.todo)).join('')
+        let message = document.getElementById('js-message')
+        let empty = todos && !todos.length
+        if (empty) {
+          message.innerHTML = '🙌'
+        }
+
+        list && !empty
+          ? list.innerHTML = todos.map(t => Todo(t)).join('')
           : ''
+
       }
 
       function Todo (props) {
         let text = props.text || ''
-        let id = props.id || ''
-        console.log('PROPS: ', props)
+        let id = props.key || ''
 
         return `
-        <li id="${id}">
-          ${text}
+        <li
+          id="${id}"
+          class="
+            display-flex
+            align-items-center
+          "
+        >
+          <form
+            action="/todos"
+            method="POST"
+          >
+            <input type="text" name="text" value="${text}">
+            <input type="hidden" name="key" value="${id}">
+            <button>Save</button>
+          </form>
           <form
             action="/todos/${id}/delete"
             method="POST"
           >
-            <input type="hidden" name="id" value="${id}" />
+            <input type="hidden" name="key" value="${id}" />
             <button>Delete</button>
           </form>
         </li>

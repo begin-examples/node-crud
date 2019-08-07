@@ -1,12 +1,9 @@
 let data = require('@begin/data')
-let id = require('nanoid')
 
 exports.handler = async function post (req) {
-  let todo = req.body
-  todo.id = id()
   await data.set({
     table: 'todos',
-    todo
+    ...req.body
   })
   if (isXHR(req.headers)) {
     return {
