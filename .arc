@@ -6,7 +6,6 @@ get /
 get /todos
 post /todos
 post /todos/delete
-get /ping
 
 @tables
 data
