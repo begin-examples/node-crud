@@ -1,7 +1,0 @@
-{
-  "name": "begin-app-delete-todos-000todoID",
-  "dependencies": {
-    "@architect/functions": "latest",
-    "@begin/data": "latest"
-  }
-}
