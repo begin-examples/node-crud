@@ -6,8 +6,6 @@ get /
 get /todos
 get /todos/:todoID
 post /todos
-patch /todos/:todoID
-post /todos/:todoID/delete
 post /todos/delete
 
 @tables
