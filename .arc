@@ -4,7 +4,6 @@ sing-4hk
 @http
 get /
 get /todos
-get /todos/:todoID
 post /todos
 post /todos/delete
 
