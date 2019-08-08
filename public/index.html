@@ -11,9 +11,15 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
+    .width-100 {
+      width: 100%;
+    }
     html,
     .height-100 {
       height: 100%;
+    }
+    .height-100vh {
+      height: 100vh;
     }
     .max-width-100 {
       max-width: 100%;
@@ -35,6 +41,9 @@
     }
     .padding-right-24 {
       padding-right: 1.5rem;
+    }
+    .padding-bottom-64 {
+      padding-bottom: 4rem;
     }
     .padding-left-24 {
       padding-left: 1.5rem;
@@ -75,11 +84,17 @@
     .font-weight-normal {
       font-weight: 300;
     }
+    .line-height-64 {
+      line-height: 4rem;
+    }
     .text-align-center {
       text-align: center;
     }
     .border-none {
       border: 0;
+    }
+    .border-bottom {
+      border-bottom: 1px solid #D8D8D8;
     }
     .color-grey {
       color: #D8D8D8;
@@ -120,8 +135,12 @@
     .overflow-hidden {
       overflow: hidden;
     }
-    .overflow-auto {
-      overflow: auto;
+    .overflow-x-hidden {
+      overflow-x: hidden;
+    }
+    .overflow-y-scroll {
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
     }
     .max-width-192 {
       max-width: 12rem;
@@ -131,6 +150,13 @@
     }
 
 @media screen and (min-width: 40em) {
+  .position-absolute-tablet {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
   .max-width-tablet {
     max-width: 30rem;
   }
@@ -165,9 +191,17 @@
 
   </style>
 </head>
-<body class="background height-100">
+<body
+  class="
+    height-100
+    background
+    overflow-y-scroll
+    overflow-x-hidden
+  "
+>
   <div
     class="
+      position-absolute-tablet
       height-100
       max-width-tablet
       margin-top-60vw
@@ -177,8 +211,8 @@
       padding-left-24
       padding-right-72-tablet
       padding-left-72-tablet
+      padding-bottom-64
       background-white
-      overflow-auto
     "
   >
     <div
@@ -232,6 +266,7 @@
             flex-grow-1
             font-size-1
             border-none
+            line-height-64
           "
         />
       </form>
@@ -294,16 +329,20 @@
         let done = complete.length && !current.length
         let none = !complete.length && !current.length
         if (none) {
-          message.innerHTML = `
-            <img class="max-width-100" src="/_static/rocket.svg" alt=""/>
-            <h2 class="font-size-1 font-weight-normal">Let's get started!</h2>
-            `
+          message.innerHTML = Message({
+            src: '/_static/rocket.svg',
+            text: 'Let\'s get started!',
+            alt: 'Rocket'
+          })
         } else if (done) {
-          message.innerHTML = `
-            <img class="max-width-100" src="/_static/astronaut.svg" alt=""/>
-            <h3 class="font-size-1 font-weight-normal">You made it!</h3>
-            `
+          message.innerHTML = Message({
+            src: '/_static/astronaut.svg',
+            text: 'You made it!',
+            alt: 'Astronaut'
+          })
         }
+
+
         if (complete.length) {
           doneTitle.classList.toggle('display-none')
         }
@@ -317,41 +356,56 @@
           : ''
       }
 
+      function Message (props) {
+        props = props || {}
+        let src = props.src || ''
+        let text = props.text || ''
+
+        return `
+<img class="max-width-100" src="${src}" alt=""/>
+<h3 class="font-size-1 font-weight-normal">${text}</h3>
+        `
+      }
+
       function Todo (props) {
         let text = props.text || ''
         let id = props.key || ''
+        let created = props.created
         let checked = props.completed
           ? 'checked="checked"'
           : ''
 
         return `
-        <li
-          id="${id}"
-          class="
-            display-flex
-            align-items-center
-          "
-        >
-          <form
-            action="/todos"
-            method="POST"
-            class="
-              display-flex
-              flex-grow-1
-            "
-          >
-            <input type="checkbox" name="completed" class="margin-right-1 cursor-pointer" ${checked}/>
-            <input type="text" name="text" value="${text}" class="flex-grow-1 border-none font-weight-normal font-size-1"/>
-            <input type="hidden" name="key" value="${id}"/>
-          </form>
-          <form
-            action="/todos/delete"
-            method="POST"
-          >
-            <input type="hidden" name="key" value="${id}" />
-            <button class="border-none cursor-pointer">🗑</button>
-          </form>
-        </li>
+<li
+  id="${id}"
+  class="
+    display-flex
+    align-items-center
+    border-bottom
+  "
+>
+  <form
+    action="/todos"
+    method="POST"
+    class="
+      width-100
+      display-flex
+      flex-grow-1
+    "
+  >
+    <input type="checkbox" name="completed" class="margin-right-1 cursor-pointer" ${checked}/>
+    <input type="text" name="text" value="${text}" class="flex-grow-1 border-none line-height-64 font-weight-normal font-size-1"/>
+    <input type="hidden" name="key" value="${id}"/>
+    <input type="hidden" name="created" value="${created}"/>
+  </form>
+  <form
+    action="/todos/delete"
+    method="POST"
+  >
+    <input type="hidden" name="key" value="${id}" />
+    <button class="border-none cursor-pointer">🗑</button>
+  </form>
+</li>
         `
       }
     }())

@@ -1,9 +1,11 @@
 let data = require('@begin/data')
 
 exports.handler = async function post (req) {
+  let todo = req.body
+  todo.created = todo.created || Date.now()
   await data.set({
     table: 'todos',
-    ...req.body
+    ...todo
   })
   if (isXHR(req.headers)) {
     return {

@@ -1,10 +1,12 @@
 const data = require('@begin/data')
 
 exports.handler = async function todos (req) {
-  console.log(req)
   let todos = await data.get({
     table: 'todos'
   })
+
+  // Return oldest todo first
+  todos.sort((a, b) => a.created > b.created)
 
   return {
     status: 201,
