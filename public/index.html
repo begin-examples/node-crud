@@ -9,40 +9,265 @@
       padding: 0;
     }
     body {
-      font-family: sans-serif;
-      padding: 2rem;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    html,
+    .height-100 {
+      height: 100%;
+    }
+    .max-width-100 {
+      max-width: 100%;
+    }
+    .margin-top-60vw {
+      margin-top: 60vw;
+    }
+    .margin-bottom-16 {
+      margin-bottom: 1rem;
+    }
+    .margin-bottom-32 {
+      margin-bottom: 2rem;
+    }
+    .margin-bottom-64 {
+      margin-bottom: 4rem;
+    }
+    .padding-1 {
+      padding: 1rem;
+    }
+    .padding-right-24 {
+      padding-right: 1.5rem;
+    }
+    .padding-left-24 {
+      padding-left: 1.5rem;
+    }
+    .top-0 {
+      top: 0;
     }
     .list-style-none {
       list-style: none;
     }
+    .position-sticky {
+      position: sticky;
+    }
     .display-flex {
       display: flex;
+    }
+    .flex-grow-1 {
+      flex-grow: 1;
     }
     .align-items-center {
       align-items: center;
     }
+    .margin-auto {
+      margin: 0 auto;
+    }
+    .margin-right-1 {
+      margin-right: 1rem;
+    }
+    .padding-top-32 {
+      padding-top: 3rem;
+    }
+    .font-size-1 {
+      font-size: 1.5rem;
+    }
+    .font-size-3 {
+      font-size: 3rem;
+    }
+    .font-weight-normal {
+      font-weight: 300;
+    }
+    .text-align-center {
+      text-align: center;
+    }
+    .border-none {
+      border: 0;
+    }
+    .color-grey {
+      color: #D8D8D8;
+    }
+    .background-grey {
+      background-color: #D8D8D8;
+    }
+    .cursor-pointer {
+      cursor: pointer;
+    }
+    .height-1 {
+      height: 1px;
+    }
+    .background,
+    .background-image {
+      background-image: url('/_static/background.png');
+    }
+
+    .background,
+    .background-repeat {
+      background-repeat: no-repeat;
+    }
+
+    .background,
+    .background-size-contain {
+      background-size: contain;
+    }
+
+    .background,
+    .background-positon {
+      background-position: top right;
+    }
+
+    .background-white {
+      background-color: white;
+    }
+    html,
+    .overflow-hidden {
+      overflow: hidden;
+    }
+    .overflow-auto {
+      overflow: auto;
+    }
+    .max-width-192 {
+      max-width: 12rem;
+    }
+    .display-none {
+      display: none;
+    }
+
+@media screen and (min-width: 40em) {
+  .max-width-tablet {
+    max-width: 30rem;
+  }
+  .margin-top-0-tablet {
+    margin-top: 0;
+  }
+  .margin-left-auto-tablet {
+    margin-left: auto;
+  }
+  .background,
+  .background-positon-tablet {
+    background-position: center right;
+  }
+  .padding-top-128-tablet {
+    padding-top: 8rem;
+  }
+  .padding-right-72-tablet {
+    padding-right: 4.5rem;
+  }
+  .padding-left-72-tablet {
+    padding-left: 4.5rem;
+  }
+  .font-size-4-tablet {
+    font-size: 4rem;
+  }
+  .background,
+  .background-size-cover-tablet {
+    background-size: cover;
+  }
+
+}
+
   </style>
 </head>
-<body>
-  <h1>TODOS</h1>
-  <h2 id="js-message"></h2>
-  <ul
-    class="list-style-none"
-    id="js-todos"
+<body class="background height-100">
+  <div
+    class="
+      height-100
+      max-width-tablet
+      margin-top-60vw
+      margin-top-0-tablet
+      margin-left-auto-tablet
+      padding-right-24
+      padding-left-24
+      padding-right-72-tablet
+      padding-left-72-tablet
+      background-white
+      overflow-auto
+    "
   >
-  </ul>
-  <form
-    action="/todos"
-    method="POST"
-  >
-    <input
-      name="text"
-      type="text"
-      placeholder="Enter todo"
-      autofocus="autofocus"
-    />
-    <button>Submit</button>
-  </form>
+    <div
+      class="
+        position-sticky
+        top-0
+        margin-bottom-64
+        padding-top-32
+        padding-top-128-tablet
+        background-white
+      "
+    >
+      <div
+        class="
+          display-flex
+          align-items-center
+        "
+      >
+        <h1
+          class="
+            color-grey
+            font-size-3
+            font-size-4-tablet
+          "
+        >
+          Todos
+        </h1>
+      </div>
+      <form
+        action="/todos"
+        method="POST"
+        class="
+          display-flex
+          align-items-center
+        "
+      >
+        <h2
+          class="
+            margin-right-1
+            font-weight-normal
+            color-grey
+          "
+        >
+          +
+        </h2>
+        <input
+          name="text"
+          type="text"
+          autofocus="autofocus"
+          class="
+            flex-grow-1
+            font-size-1
+            border-none
+          "
+        />
+      </form>
+      <hr class="height-1 background-grey border-none"/>
+    </div>
+    <div
+      id="js-message"
+      class="
+        max-width-192
+        margin-auto
+        text-align-center
+        color-grey
+      "
+    >
+    </div>
+    <ul
+      class="margin-bottom-32 list-style-none"
+      id="js-todos"
+    >
+    </ul>
+    <h2
+      id="js-done-title"
+      class="
+        margin-bottom-16
+        color-grey
+        display-none
+      "
+    >
+      Done
+    </h2>
+    <ul
+      class="list-style-none"
+      id="js-completed"
+    >
+    </ul>
+  </div>
   <script>
     (function () {
       init()
@@ -61,21 +286,43 @@
 
       function update (todos) {
         let list = document.getElementById('js-todos')
+        let completed = document.getElementById('js-completed')
         let message = document.getElementById('js-message')
-        let empty = todos && !todos.length
-        if (empty) {
-          message.innerHTML = '🙌'
+        let current = todos.filter(t => !t.completed)
+        let complete = todos.filter(t => t.completed)
+        let doneTitle = document.getElementById('js-done-title')
+        let done = complete.length && !current.length
+        let none = !complete.length && !current.length
+        if (none) {
+          message.innerHTML = `
+            <img class="max-width-100" src="/_static/rocket.svg" alt=""/>
+            <h2 class="font-size-1 font-weight-normal">Let's get started!</h2>
+            `
+        } else if (done) {
+          message.innerHTML = `
+            <img class="max-width-100" src="/_static/astronaut.svg" alt=""/>
+            <h3 class="font-size-1 font-weight-normal">You made it!</h3>
+            `
+        }
+        if (complete.length) {
+          doneTitle.classList.toggle('display-none')
         }
 
-        list && !empty
-          ? list.innerHTML = todos.map(t => Todo(t)).join('')
+        list && current.length
+          ? list.innerHTML = current.map(t => Todo(t)).join('')
           : ''
 
+        completed && complete.length
+          ? completed.innerHTML = complete.map(t => Todo(t)).join('')
+          : ''
       }
 
       function Todo (props) {
         let text = props.text || ''
         let id = props.key || ''
+        let checked = props.completed
+          ? 'checked="checked"'
+          : ''
 
         return `
         <li
@@ -88,17 +335,21 @@
           <form
             action="/todos"
             method="POST"
+            class="
+              display-flex
+              flex-grow-1
+            "
           >
-            <input type="text" name="text" value="${text}">
-            <input type="hidden" name="key" value="${id}">
-            <button>Save</button>
+            <input type="checkbox" name="completed" class="margin-right-1 cursor-pointer" ${checked}/>
+            <input type="text" name="text" value="${text}" class="flex-grow-1 border-none font-weight-normal font-size-1"/>
+            <input type="hidden" name="key" value="${id}"/>
           </form>
           <form
             action="/todos/delete"
             method="POST"
           >
             <input type="hidden" name="key" value="${id}" />
-            <button>Delete</button>
+            <button class="border-none cursor-pointer">🗑</button>
           </form>
         </li>
         `
