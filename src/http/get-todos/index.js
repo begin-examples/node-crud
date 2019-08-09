@@ -1,6 +1,6 @@
 const data = require('@begin/data')
 
-exports.handler = async function todos (req) {
+exports.handler = async function todos () {
   let todos = await data.get({
     table: 'todos'
   })
