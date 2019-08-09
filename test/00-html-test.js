@@ -1,5 +1,5 @@
 let test = require('tape')
-let tiny = require('tiny-json-http')
+// let tiny = require('tiny-json-http')
 let sandbox = require('@architect/architect').sandbox
 
 test('env', t => {
@@ -15,6 +15,7 @@ test('sandbox.start', async t => {
 })
 
 // check for 200
+/*
 test('get /', async t => {
   t.plan(1)
   try {
@@ -26,6 +27,7 @@ test('get /', async t => {
     console.log(e.body)
   }
 })
+*/
 
 test('shut down the sandbox', t => {
   t.plan(1)
