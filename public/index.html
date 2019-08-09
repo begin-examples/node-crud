@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title>TODOS</title>
   <style>
     * {
@@ -42,8 +43,14 @@
     .padding-1 {
       padding: 1rem;
     }
+    .padding-top-8 {
+      padding-top: 0.5rem;
+    }
     .padding-right-24 {
       padding-right: 1.5rem;
+    }
+    .padding-bottom-8 {
+      padding-bottom: 0.5rem;
     }
     .padding-bottom-64 {
       padding-bottom: 4rem;
@@ -54,14 +61,29 @@
     .top-0 {
       top: 0;
     }
+    .top-16 {
+      top: 1rem;
+    }
+    .left-16 {
+      left: 1rem;
+    }
     .list-style-none {
       list-style: none;
+    }
+    .position-absolute {
+      position: absolute;
     }
     .position-sticky {
       position: sticky;
     }
+    .border-radius-pill {
+      border-radius:9999px;
+    }
     .display-flex {
       display: flex;
+    }
+    .display-inline-flex {
+      display: inline-flex;
     }
     .flex-grow-1 {
       flex-grow: 1;
@@ -104,6 +126,9 @@
     }
     .background-grey {
       background-color: #D8D8D8;
+    }
+    .background-royal {
+      background-color: #132865;
     }
     .cursor-pointer {
       cursor: pointer;
@@ -204,6 +229,31 @@
     overflow-x-hidden
   "
 >
+  <div
+    class="
+      position-absolute
+      top-16
+      left-16
+      display-flex
+      align-items-center
+      background-royal
+      border-radius-pill
+    "
+  >
+    <a
+      class="
+        display-inline-flex
+        padding-top-8
+        padding-right-24
+        padding-bottom-8
+        padding-left-24
+      "
+      href="https://begin.com"
+      target="_blank"
+    >
+      <img src="/_static/begin-lockup.svg" alt="Begin logo">
+    </a>
+  </div>
   <div
     class="
       min-height-100vh
