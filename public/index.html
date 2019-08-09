@@ -113,8 +113,8 @@
     .margin-right-1 {
       margin-right: 1rem;
     }
-    .padding-top-32 {
-      padding-top: 3rem;
+    .padding-top-80 {
+      padding-top: 5rem;
     }
     .font-size-1 {
       font-size: 1.5rem;
@@ -210,9 +210,6 @@
     .height-16 {
       height: 1rem;
     }
-    .z-index--1 {
-      z-index: -1;
-    }
 
 @media screen and (min-width: 40em) {
   .max-width-tablet {
@@ -273,7 +270,6 @@
 </svg>
   <div
     class="
-      z-index--1
       position-absolute
       top-16
       left-16
@@ -281,6 +277,7 @@
       align-items-center
       background-royal
       border-radius-pill
+      cursor-pointer
     "
   >
     <a
@@ -317,9 +314,8 @@
         position-sticky
         top-0
         margin-bottom-64
-        padding-top-32
+        padding-top-80
         padding-top-128-tablet
-        background-white
       "
     >
       <div
@@ -362,6 +358,7 @@
           class="
             flex-grow-1
             font-size-1
+            color-royal
             border-none
             line-height-64
             focus-outline-0
@@ -501,7 +498,7 @@
       class="
         width-16
         margin-right-1
-        cursor-pointero
+        cursor-pointer
       "
       ${checked}
     />
