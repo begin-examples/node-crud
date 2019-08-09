@@ -142,21 +142,20 @@
       overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
     }
+    .overflow-y-hidden {
+      overflow-y: hidden;
+    }
     .max-width-192 {
       max-width: 12rem;
     }
     .display-none {
       display: none;
     }
+    .min-height-100vh {
+      min-height: 100vh;
+    }
 
 @media screen and (min-width: 40em) {
-  .position-absolute-tablet {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-  }
-
   .max-width-tablet {
     max-width: 30rem;
   }
@@ -201,8 +200,7 @@
 >
   <div
     class="
-      position-absolute-tablet
-      height-100
+      min-height-100vh
       max-width-tablet
       margin-top-60vw
       margin-top-0-tablet
