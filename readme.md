@@ -1,5 +1,5 @@
-# RESTful API
-
+# CRUD
+The most basic Begin **C**reate **R**ead **U**pdate **D**elete example
 
 ## Getting started
 - First, initialize the repo + route deps: `npm i && npx hydrate`
