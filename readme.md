@@ -1,5 +1,6 @@
 # CRUD
-The most basic Begin **C**reate **R**ead **U**pdate **D**elete example
+The most basic Begin **C**reate **R**ead **U**pdate **D**elete example.
+
 This project exemplifies a basic todo app that uses one static html page and three API endpoints.
 
 ## Getting started
