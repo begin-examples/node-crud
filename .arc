@@ -1,9 +1,13 @@
+# Warning: do not edit
+# --------------------
+# This is a generated file and will be overwritten
+
 @app
-sing-4hk
+begin-app
 
 @http
-get /
-get /todos
+get  /
+get  /todos
 post /todos
 post /todos/delete
 

@@ -1,15 +1,16 @@
 {
   "name": "begin-app",
-  "version": "1.0.1",
-  "description": "Begin app",
+  "version": "0.0.0",
+  "description": "Begin basic CRUD app",
   "scripts": {
     "lint": "eslint src --ignore-pattern node_modules --fix",
-    "test": "NODE_ENV=testing tape test/*-test.js | tap-spec",
-    "start": "NODE_ENV=testing ARC_LOCAL=1 npx sandbox"
+    "test": "cross-env NODE_ENV=testing tape test/*-test.js | tap-spec",
+    "start": "cross-env NODE_ENV=testing BEGIN_DATA_TABLE_NAME=begin-app-staging-data npx sandbox"
   },
-  "dependencies": {
-    "@architect/architect": "^6.0.10",
+  "devDependencies": {
+    "@architect/sandbox": "latest",
     "@begin/data": "latest",
+    "cross-env": "^5.2.1",
     "eslint": "^6.3.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.11.0",
