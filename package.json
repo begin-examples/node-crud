@@ -10,7 +10,7 @@
   "dependencies": {
     "@architect/architect": "^5.9.13",
     "@begin/data": "latest",
-    "eslint": "^5.16.0",
+    "eslint": "^6.3.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.10.2",
     "tiny-json-http": "^7.1.2"
