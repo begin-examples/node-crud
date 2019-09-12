@@ -1,6 +1,6 @@
 let test = require('tape')
-// let tiny = require('tiny-json-http')
-let sandbox = require('@architect/architect').sandbox
+let tiny = require('tiny-json-http')
+let sandbox = require('@architect/sandbox')
 
 test('env', t => {
   t.plan(1)
@@ -14,22 +14,46 @@ test('sandbox.start', async t => {
   t.ok(true, 'opened')
 })
 
-// check for 200
-/*
+// callback style
+test('get /', t => {
+  t.plan(1)
+  tiny.get({
+    url: 'http://localhost:3333'
+  },
+  function win (err, result) {
+    if (err) {
+      t.fail(err, err)
+    } else {
+      t.ok(true, 'got result', console.log(result.toString().substring(50) + '...'))
+    }
+  })
+})
+
+// promise style
+test('get /', t => {
+  t.plan(1)
+  tiny.get({
+    url: 'http://localhost:3333'
+  }).then(function win (result) {
+    t.ok(true, 'got result', console.log(result.toString().substring(50) + '...'))
+  }).catch(function fail (err) {
+    t.fail(err, err)
+  })
+})
+
+// async/await style
 test('get /', async t => {
   t.plan(1)
   try {
     var url = 'http://localhost:3333'
     var result = await tiny.get({url})
-    t.ok(true, 'got result', console.log(result.toString().substring(50) + '...'))
+    t.ok(true, 'got result',console.log(result.toString().substring(50) + '...'))
   } catch (e) {
-    t.fail(e)
-    console.log(e.body)
+    t.fail(e, e, console.log(e))
   }
 })
-*/
 
-test('shut down the sandbox', t => {
+test('shut down the sandbox', t=> {
   t.plan(1)
   end()
   t.ok(true, 'shutdown successfully')

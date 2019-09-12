@@ -7,6 +7,6 @@ exports.handler = async function destroy (req) {
   })
   return {
     statusCode: 302,
-    location: '/'
+    headers: {'location': '/'}
   }
 }
