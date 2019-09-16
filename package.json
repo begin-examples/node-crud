@@ -4,8 +4,8 @@
   "description": "Begin basic CRUD app",
   "scripts": {
     "lint": "eslint src --ignore-pattern node_modules --fix",
-    "test": "cross-env NODE_ENV=testing tape test/*-test.js | tap-spec",
-    "start": "cross-env NODE_ENV=testing BEGIN_DATA_TABLE_NAME=begin-app-staging-data npx sandbox"
+    "start": "cross-env NODE_ENV=testing npx sandbox",
+    "test": "cross-env NODE_ENV=testing PORT=6666 tape test/*-test.js | tap-spec"
   },
   "devDependencies": {
     "@architect/sandbox": "latest",
