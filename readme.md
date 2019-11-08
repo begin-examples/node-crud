@@ -1,5 +1,7 @@
 # Begin basic CRUD app
 
+$BADGE
+
 A super simple Begin **c**reate **r**ead **u**pdate **d**elete app that exemplifies a basic todo app that uses one static html page and three API endpoints.
 
 
