@@ -10,6 +10,9 @@ exports.handler = async function post (req) {
   })
   return {
     statusCode: 302,
-    headers: {'location': '/'}
+    headers: {
+      'location': '/',
+      'cache-control': 'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0'
+    }
   }
 }
