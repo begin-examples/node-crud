@@ -7,7 +7,7 @@ A super simple Begin **c**reate **r**ead **u**pdate **d**elete app that exemplif
 
 ## Deploy your own
 
-$DEPLOY
+[![Deploy to Begin](https://static.begin.com/deploy-to-begin.svg)](https://begin.com/apps/create?template=https://github.com/begin-examples/node-crud)
 
 Deploy your own clone of this app to Begin!
 
