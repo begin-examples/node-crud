@@ -163,7 +163,7 @@
     }
     .background,
     .background-image {
-      background-image: url('/_static/background.jpg');
+      background-image: url('/background.jpg');
     }
 
     .background,
@@ -400,7 +400,7 @@
       href="https://begin.com"
       target="_blank"
     >
-      <img src="/_static/begin-lockup.svg" alt="Begin logo">
+      <img src="/begin-lockup.svg" alt="Begin logo">
     </a>
   </div>
   <script>
@@ -434,13 +434,13 @@
         let none = !complete.length && !current.length
         if (none) {
           message.innerHTML = Message({
-            src: '/_static/rocket.svg',
+            src: '/rocket.svg',
             text: 'Let\'s get started!',
             alt: 'Rocket'
           })
         } else if (done) {
           message.innerHTML = Message({
-            src: '/_static/astronaut.svg',
+            src: '/astronaut.svg',
             text: 'You did it!',
             alt: 'Astronaut'
           })
