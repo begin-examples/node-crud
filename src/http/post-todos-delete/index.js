@@ -10,7 +10,7 @@ exports.handler = async function destroy (req) {
   return {
     statusCode: 302,
     headers: {
-      'location': '/',
+      location: '/',
       'cache-control': 'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0'
     }
   }
