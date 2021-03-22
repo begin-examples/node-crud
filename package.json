@@ -6,15 +6,21 @@
     "app": "crud-app",
     "http": [
       {
-        "/todos": {
-          "method": "get",
-          "src": "/todos"
+        "/todos/:id": {
+          "method": "post",
+          "src": "/todos/update"
         }
       },
       {
         "/todos": {
           "method": "post",
-          "src": "/todos/save"
+          "src": "/todos/create"
+        }
+      },
+      {
+        "/todos": {
+          "method": "get",
+          "src": "/todos/read"
         }
       },
       {
@@ -39,7 +45,7 @@
   },
   "dependencies": {
     "@architect/functions": "^3.13.9",
-    "@architect/sandbox": "^3.3.8",
+    "@architect/sandbox": "^3.4.0",
     "@begin/data": "^2.0.1",
     "tiny-json-http": "^7.3.0"
   }

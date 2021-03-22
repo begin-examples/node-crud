@@ -1,11 +1,13 @@
 let arc = require('@architect/functions')
 let data = require('@begin/data')
 
-exports.handler = async function post (req) {
-  let todo = arc.http.helpers.bodyParser(req) // Base64 decodes + parses body
-  todo.created = todo.created || Date.now()
+exports.handler = async function update(req) {
+  console.log('UPDATE')
+  let todo = arc.http.helpers.bodyParser(req)
+  let key = req.pathParameters.id
   todo.completed = !!todo.completed
   await data.set({
+    key,
     table: 'todos',
     ...todo
   })
