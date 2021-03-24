@@ -1,7 +1,6 @@
 const data = require('@begin/data')
 
 exports.handler = async function read(req) {
-  console.log('READ')
   let pages = await data.get({
     table: 'todos',
     limit: 25
@@ -11,8 +10,8 @@ exports.handler = async function read(req) {
   for await (let todo of pages) {
     todos.push(todo)
   }
-  // Return oldest todo first
-  todos.sort((a, b) => a.created > b.created)
+
+  todos.sort((a, b) => a.created - b.created)
 
   return {
     statusCode: 201,

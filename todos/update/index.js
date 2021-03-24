@@ -2,12 +2,9 @@ let arc = require('@architect/functions')
 let data = require('@begin/data')
 
 exports.handler = async function update(req) {
-  console.log('UPDATE')
   let todo = arc.http.helpers.bodyParser(req)
-  let key = req.pathParameters.id
   todo.completed = !!todo.completed
   await data.set({
-    key,
     table: 'todos',
     ...todo
   })
