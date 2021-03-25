@@ -7,20 +7,26 @@
     "http": [
       {
         "/todos": {
-          "method": "get",
-          "src": "/todos"
+          "method": "post",
+          "src": "/todos/create"
         }
       },
       {
         "/todos": {
-          "method": "post",
-          "src": "/todos/save"
+          "method": "get",
+          "src": "/todos/read"
         }
       },
       {
         "/todos/delete": {
           "method": "post",
           "src": "/todos/delete"
+        }
+      },
+      {
+        "/todos/:id": {
+          "method": "post",
+          "src": "/todos/update"
         }
       }
     ],
@@ -39,7 +45,7 @@
   },
   "dependencies": {
     "@architect/functions": "^3.13.9",
-    "@architect/sandbox": "^3.3.8",
+    "@architect/sandbox": "^3.4.0",
     "@begin/data": "^2.0.1",
     "tiny-json-http": "^7.3.0"
   }

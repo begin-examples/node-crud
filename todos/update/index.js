@@ -1,11 +1,12 @@
 let arc = require('@architect/functions')
 let data = require('@begin/data')
 
-exports.handler = async function destroy(req) {
-  let key = arc.http.helpers.bodyParser(req).key
-  await data.destroy({
-    key,
-    table: 'todos'
+exports.handler = async function update(req) {
+  let todo = arc.http.helpers.bodyParser(req)
+  todo.completed = !!todo.completed
+  await data.set({
+    table: 'todos',
+    ...todo
   })
   return {
     statusCode: 302,

@@ -404,25 +404,19 @@
     </a>
   </div>
   <script>
-    (function () {
-      // Kick off the app
-      init()
+    (async function() {
 
       // GET all todos
-      function init () {
-        fetch('/todos', {
-          credentials: 'same-origin',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(res => res)
-        .then(body => body.json())
-        // Call update with fetched todos
-        .then(json => update(json.todos))
-      }
+      let todos = await (await fetch('/todos', {
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })).json()
 
       // Update the DOM with data
+      update(todos)
+
       function update (todos) {
         let list = document.getElementById('js-todos')
         let completed = document.getElementById('js-completed')
@@ -488,7 +482,7 @@
   "
 >
   <form
-    action="/todos"
+    action="/todos/${id}"
     method="POST"
     class="
       min-width-0
@@ -506,7 +500,7 @@
         cursor-pointer
       "
       ${checked}
-    />
+    >
     <input
       type="text"
       name="text"
@@ -521,7 +515,7 @@
         font-size-1
         focus-outline-0
       "
-    />
+    >
     <input type="hidden" name="key" value="${id}"/>
     <input type="hidden" name="created" value="${created}"/>
     <button
