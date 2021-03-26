@@ -18,15 +18,15 @@
         }
       },
       {
-        "/todos/:id": {
-          "method": "post",
-          "src": "/todos/update"
-        }
-      },
-      {
         "/todos/delete": {
           "method": "post",
           "src": "/todos/delete"
+        }
+      },
+      {
+        "/todos/:id": {
+          "method": "post",
+          "src": "/todos/update"
         }
       }
     ],
